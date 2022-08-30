@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>工具</title>
+<HTA:APPLICATION ID="oMyApp"
+APPLICATIONNAME="monster"
+BORDER="1"
+CAPTION="yes"
+ICON="/graphics/creature.ico"
+MAXIMIZEBUTTON="no"
+MINIMIZEBUTTON="yes"
+SHOWINTASKBAR="yes"
+SINGLEINSTANCE="yes"
+SYSMENU="yes"
+SCROLL="no"
+WINDOWSTATE="normal">
+<script type="text/javascript">
+    window.onload = function(){
+        window.resizeTo ("500","300")
+    };
+</script>
+<style>
+    @import url(./css.css);
+</style>
+</head>
+<body>
+<div class="wrapper-one">
+ 	<div class="two-wrapper">
+ 		<button class="button-wrapper-one" onclick="">打开vpn+输入密码</button>
+	</div>
+	<div class="two-wrapper">
+ 		<button class="button-wrapper-one">打开应用软件</button>
+	</div>
+</div>
+<div class="wrapper-one">
+ 	<div class="two-wrapper">
+ 		<button class="button-wrapper-one" >打开vpn</button>
+	</div>
+	<div class="two-wrapper">
+ 		<button class="button-wrapper-one">输入vpn密码</button>
+	</div>
+</div>
+<div class="wrapper-two">
+ 	<div class="three-wrapper">
+ 		<button class="button-wrapper-two">关闭vpn</button>
+	</div>
+	<div class="three-wrapper">
+ 		<button class="button-wrapper-two">打开文件夹</button>
+	</div>
+	<div class="three-wrapper">
+ 		<button class="button-wrapper-two">关闭程序</button>
+	</div>
+</div>
+<script language="javascript">
+function exec(command)
+{
+window.oldOnError = window.onerror;
+window._command = command;
+window.onerror = function (err)
+  {
+ if (err.indexOf('utomation') != -1)
+ {
+  alert('命令' + window._command + ' 已经被用户禁止！');
+  return true;
+ }
+ Else
+  return false;
+};
+//-----------//
+var wsh = new ActiveXObject('WScript.Shell');
+if (wsh) wsh.Run(command);
+wsh = null;
+window.onerror = window.oldOnError;
+}
+</script>
+</body>
+</html>
